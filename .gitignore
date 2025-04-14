@@ -1,0 +1,4 @@
+node_modules
+eng.traineddata
+.env
+package-lock.json
