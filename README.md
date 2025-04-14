@@ -20,6 +20,6 @@ This project implements an **OCR (Optical Character Recognition)** service using
 ## 📦 Installation
 
 ```bash
-git clone https://github.com/your-username/ocr-service.git
+git clone https://github.com/Aaleen110/ocr-service.git
 cd ocr-service
 npm install
