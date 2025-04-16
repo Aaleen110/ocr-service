@@ -5,21 +5,17 @@ const handleHealthCheck = (req, res) => {
     res.json({ message: 'OCR server is running!' });
 };
 
-// Controller for the OCR endpoint
-const handleOCRRequest = async (req, res, next) => { // Added next for error handling
+// Controller for the OCR endpoint (PDF)
+const handleOCRRequest = async (req, res, next) => {
     if (!req.file) {
-        return res.status(400).json({ error: 'No image uploaded' });
+        return res.status(400).json({ error: 'No PDF uploaded' });
     }
-
     try {
-        const text = await ocrService.performOCR(req.file.buffer);
+        const text = await ocrService.performPDFOCR(req.file.buffer);
         res.json({ text });
     } catch (error) {
-        // Log the specific service error
-        console.error('OCR request failed:', error.message);
-        // Pass a generic error to the central error handler
-        // Alternatively, could send specific response here: res.status(500).json({ error: 'OCR processing failed' });
-        next(new Error('OCR processing failed')); 
+        console.error('PDF OCR request failed:', error.message);
+        next(new Error('PDF OCR processing failed'));
     }
 };
 
